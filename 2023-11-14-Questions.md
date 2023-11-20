@@ -14,7 +14,6 @@
 - Type_ID: the same as Species_ID, but for individuals.
 - Remaining_life: a constant which is randomly generated from the species Life_span.
 - Energy: a constant which is randomly generated from the species Full_energy.
-- Sex: Male or Female.
 - Is_Mature: a boolean value that indicates whether the individual is mature or not.
 - Mating_Rank: a float number between 0 and 1, which is randomly generated from a uniform distribution. 
 It represents the score of an individual in the mating pool. The higher the score, the more likely the individual will be chosen as a mate.
