@@ -1,7 +1,7 @@
 # @Author  : Mei Jiaojiao
 # @Time    : 2023/11/27 15:15
 # @Software: PyCharm
-# @File    : IBMs_prey_predator.py
+# @File    : IBMs_prey_predator_abandoned.py
 
 # import packages
 import numpy as np

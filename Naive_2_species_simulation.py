@@ -23,6 +23,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from progressbar import progressbar as pr_bar
 import warnings
+from tqdm import tqdm
 
 warnings.filterwarnings("ignore")
 
@@ -138,7 +139,7 @@ for (x, y) in fox_coords:
 # population of rabbits and foxes
 rabbit_nums, fox_nums = [rabbits], [foxes]
 
-for i in pr_bar(range(steps), max_value=steps,redirect_stdout=True):
+for i in tqdm(range(steps)):
 
     # randomly move each animal: UP, DOWN, LEFT, RIGHT, STAY
     directions = np.random.randint(0, 5, size=len(animals))

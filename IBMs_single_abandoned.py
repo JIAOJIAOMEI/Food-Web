@@ -1,7 +1,7 @@
 # @Author  : Mei Jiaojiao
 # @Time    : 2023/11/23 16:37
 # @Software: PyCharm
-# @File    : IBMs_single.py
+# @File    : IBMs_single_abandoned.py
 
 # import packages
 import numpy as np
