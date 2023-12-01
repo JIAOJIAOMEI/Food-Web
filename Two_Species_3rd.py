@@ -203,29 +203,29 @@ def update_prey_status(population, current_time):
 
 
 # Prey and Predator params
-x_grid = 28
-y_grid = 28
-prey_pop_limit = 550
+x_grid = 38
+y_grid = 38
+prey_pop_limit = 650
 time = 30
 prey_params = {
     'x_grid': x_grid,
     'y_grid': y_grid,
     'species_name': 'prey',
-    'species_average_life_span': 20,
-    'species_offspring_possion_mean': 10,
+    'species_average_life_span': 4,
+    'species_offspring_possion_mean': 8,
     'init_species_size': 300,
-    'activity_radius_max': 2,
-    'speed_max': 3
+    'activity_radius_max': 1,
+    'speed_max': 3.5
 }
-predator_pop_limit = 300
+predator_pop_limit = 10
 predator_params = {
     'x_grid': x_grid,
     'y_grid': y_grid,
     'species_name': 'predator',
     'species_average_life_span': 8,
-    'species_offspring_possion_mean': 1.5,
+    'species_offspring_possion_mean': 1.2,
     'init_species_size': 30,
-    'activity_radius_max': 13,
+    'activity_radius_max': 7,
     'speed_max': 4
 }
 
