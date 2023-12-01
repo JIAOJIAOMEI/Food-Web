@@ -1,4 +1,10 @@
 # @Author  : Mei Jiaojiao
+# @Time    : 2023/12/1 10:41
+# @Software: PyCharm
+# @File    : Two_Species_3rd.py
+
+
+# @Author  : Mei Jiaojiao
 # @Time    : 2023/12/01 08:52
 # @Software: PyCharm
 # @File    : Two_Species.py
@@ -60,7 +66,6 @@ class Prey(Species):
                 distance = np.sqrt((self.x - predator.x) ** 2 + (self.y - predator.y) ** 2)
                 if distance <= (self.activity_radius + predator.activity_radius):
                     self.being_caught = True
-                    self.num_offspring = 0
                     time_for_predation = 1
                     self.death_time = time_for_predation + current_time
                     predator.death_time += time_for_predation
@@ -144,7 +149,6 @@ class Predator(Species):
                     prey.being_caught = True
                     self.eat = True
                     time_for_predation = 1
-                    prey.num_offspring = 0
                     prey.death_time = time_for_predation + current_time
                     self.death_time += time_for_predation
                     if np.random.rand() < 1 - current_predator_pop_size / predator_pop_limit:
@@ -186,8 +190,7 @@ def update_predators_status(population, current_time):
             agent.status = 'active'
         if not agent.eat:
             agent.not_eat += 1
-            agent.num_offspring -= 1
-        if agent.not_eat == 4:
+        if agent.not_eat == 5:
             agent.status = 'dead'
 
 
@@ -200,30 +203,30 @@ def update_prey_status(population, current_time):
 
 
 # Prey and Predator params
-x_grid = 40
-y_grid = 40
-prey_pop_limit = 900
-time = 300
+x_grid = 50
+y_grid = 50
+prey_pop_limit = 500
+time = 25
 prey_params = {
     'x_grid': x_grid,
     'y_grid': y_grid,
     'species_name': 'prey',
-    'species_average_life_span': 12,
+    'species_average_life_span': 20,
     'species_offspring_possion_mean': 10,
     'init_species_size': 300,
     'activity_radius_max': 2,
-    'speed_max': 1
+    'speed_max': 3
 }
-predator_pop_limit = 150
+predator_pop_limit = 200
 predator_params = {
     'x_grid': x_grid,
     'y_grid': y_grid,
     'species_name': 'predator',
-    'species_average_life_span':7,
-    'species_offspring_possion_mean': 0.8,
-    'init_species_size': 10,
-    'activity_radius_max': 4,
-    'speed_max': 2.5
+    'species_average_life_span': 8,
+    'species_offspring_possion_mean': 1.5,
+    'init_species_size': 30,
+    'activity_radius_max': 12,
+    'speed_max': 4
 }
 
 # Create prey and predator populations
