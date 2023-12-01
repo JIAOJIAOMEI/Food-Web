@@ -221,7 +221,7 @@ predator_params = {
     'species_name': 'predator',
     'species_average_life_span':7,
     'species_offspring_possion_mean': 0.8,
-    'init_species_size': 10,
+    'init_species_size': 30,
     'activity_radius_max': 4,
     'speed_max': 2.5
 }

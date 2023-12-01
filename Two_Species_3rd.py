@@ -190,7 +190,7 @@ def update_predators_status(population, current_time):
             agent.status = 'active'
         if not agent.eat:
             agent.not_eat += 1
-        if agent.not_eat == 5:
+        if agent.not_eat == 4:
             agent.status = 'dead'
 
 
@@ -203,29 +203,29 @@ def update_prey_status(population, current_time):
 
 
 # Prey and Predator params
-x_grid = 38
-y_grid = 38
-prey_pop_limit = 650
+x_grid = 28
+y_grid = 28
+prey_pop_limit = 400
 time = 30
 prey_params = {
     'x_grid': x_grid,
     'y_grid': y_grid,
     'species_name': 'prey',
-    'species_average_life_span': 4,
-    'species_offspring_possion_mean': 8,
+    'species_average_life_span': 20,
+    'species_offspring_possion_mean': 10,
     'init_species_size': 300,
-    'activity_radius_max': 1,
-    'speed_max': 3.5
+    'activity_radius_max': 2,
+    'speed_max': 2
 }
-predator_pop_limit = 10
+predator_pop_limit = 150
 predator_params = {
     'x_grid': x_grid,
     'y_grid': y_grid,
     'species_name': 'predator',
     'species_average_life_span': 8,
-    'species_offspring_possion_mean': 1.2,
+    'species_offspring_possion_mean': 1.5,
     'init_species_size': 30,
-    'activity_radius_max': 7,
+    'activity_radius_max': 12,
     'speed_max': 4
 }
 
