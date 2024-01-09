@@ -70,6 +70,7 @@ class Population:
         plt.xlabel('time')
         plt.ylabel('population size')
         plt.title('Population size over time')
+        plt.savefig('Population size over time(single).png', dpi=300, bbox_inches='tight', pad_inches=0.1)
         plt.show()
 
 

@@ -3,12 +3,6 @@
 # @Software: PyCharm
 # @File    : Two_Species_3rd.py
 
-
-# @Author  : Mei Jiaojiao
-# @Time    : 2023/12/01 08:52
-# @Software: PyCharm
-# @File    : Two_Species.py
-
 import numpy as np
 from matplotlib import pyplot as plt
 from matplotlib.offsetbox import OffsetImage, AnnotationBbox
@@ -320,7 +314,5 @@ if __name__ == '__main__':
         # add new offspring to population
         preys.extend(preys_new_offspring)
         predators.extend(predators_new_offspring)
-
-        #
 
     pop_history_plot(pop_history)
