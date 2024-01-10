@@ -51,7 +51,7 @@ prey.y = prey.y + np.sin(angle) * prey_speed
 predator.x = predator.x + np.cos(angle) * predator_speed
 predator.y = predator.y + np.sin(angle) * predator_speed
 ```
-3. If it hunts no rabbit successfully in continous 4 time steps, then the fox will die despite its death time. This parameter could be changed later.
+3. If it hunts no rabbit successfully in continous 4 time steps, then the fox will die despite its death time. This parameter could be changed later.That's why if there is no rabbits, the foxes will die eventually.
 
 The breeding process is similar to the single species model. 
 
