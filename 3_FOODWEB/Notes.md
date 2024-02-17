@@ -1,6 +1,5 @@
-Dear professor,
+# Food-Web Project Update
 
-I'm here to provide you with an update on the progress of our Food-Web project.
 I have completed agent-based simulations of the food web, which involve three species: rabbits, foxes, and wolves. In this simulation, rabbits are preyed upon by foxes, while foxes are preyed upon by wolves. There is no direct interaction between rabbits and wolves. Each species is characterized by a set of parameters that dictate its behavior and life cycle.
 For the rabbits, the parameters are:
 
