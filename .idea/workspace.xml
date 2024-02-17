@@ -4,13 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ba3ab0cd-8bd2-49eb-bc13-eac2d9081f2e" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/3_species_theory.png" beforeDir="false" afterPath="$PROJECT_DIR$/3_species_theory.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/3_species_theory.py" beforeDir="false" afterPath="$PROJECT_DIR$/3_species_theory.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Population_size_over_time.png" beforeDir="false" afterPath="$PROJECT_DIR$/Population_size_over_time.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Two_Species_3rd.py" beforeDir="false" afterPath="$PROJECT_DIR$/Two_Species_3rd.py" afterDir="false" />
-    </list>
+    <list default="true" id="ba3ab0cd-8bd2-49eb-bc13-eac2d9081f2e" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -210,6 +204,7 @@
       <workItem from="1708075480320" duration="5000" />
       <workItem from="1708075692197" duration="1924000" />
       <workItem from="1708186965517" duration="268000" />
+      <workItem from="1708187258875" duration="593000" />
     </task>
     <servers />
   </component>
@@ -221,7 +216,7 @@
     <SUITE FILE_PATH="coverage/Food_Web$Two_Species_2nd.coverage" NAME="Two_Species_2nd Coverage Results" MODIFIED="1706939239293" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Food_Web$Two_Species.coverage" NAME="Two_Species Coverage Results" MODIFIED="1701392118762" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Food_Web$IBMs_simple_version.coverage" NAME="IBMs_single Coverage Results" MODIFIED="1701074802485" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/Food_Web$3_species_theory.coverage" NAME="3_species_theory Coverage Results" MODIFIED="1708187176474" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Food_Web$3_species_theory.coverage" NAME="3_species_theory Coverage Results" MODIFIED="1708187350608" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Food_Web$Single_Species_Log_Growth.coverage" NAME="Single_Species_Log_Growth Coverage Results" MODIFIED="1704793129693" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Food_Web$exprandomtest.coverage" NAME="exprandomtest Coverage Results" MODIFIED="1704794178580" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Food_Web$IBMs_prey_predator.coverage" NAME="IBMs_prey_predator Coverage Results" MODIFIED="1701324069389" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
