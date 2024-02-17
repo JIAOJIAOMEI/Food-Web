@@ -20,6 +20,7 @@ class Species:
         self.init_species_size = params['init_species_size']
         self.activity_radius_max = params['activity_radius_max']
         self.speed_max = params['speed_max']
+        self.birth_rate = params['birth_rate']
 
     def birth_time(self, agent, current_time):
         agent.birth_time = current_time
@@ -54,7 +55,7 @@ class Prey(Species):
         self.speed = np.random.rand() * self.speed_max
         self.being_caught = False
 
-    def enemy_action(self, current_time, predators, current_predator_pop_size):
+    def enemy_action(self, current_time, predators):
         if not self.being_caught:
             for predator in predators:
                 distance = np.sqrt((self.x - predator.x) ** 2 + (self.y - predator.y) ** 2)
@@ -63,8 +64,9 @@ class Prey(Species):
                     time_for_predation = 1
                     self.death_time = time_for_predation + current_time
                     predator.death_time += time_for_predation
-                    if np.random.rand() < 1 - current_predator_pop_size / predator_pop_limit:
-                        predator.num_offspring += 1
+                    for _ in range(2):
+                        if np.random.rand() < predator.birth_rate:
+                            predator.num_offspring += 1
                 elif distance <= self.activity_radius_max + predator.activity_radius_max:
                     angle = np.arctan2(self.y - predator.y, self.x - predator.x)
                     # for prey, it should run away from predator
@@ -73,7 +75,22 @@ class Prey(Species):
                     # for predator, it should chase prey
                     predator.x = predator.x + np.cos(angle) * predator.speed
                     predator.y = predator.y + np.sin(angle) * predator.speed
-                    # check boundary
+                    # if self.x > self.x_grid:
+                    #     self.status = 'dead'
+                    # elif self.x < 0:
+                    #     self.status = 'dead'
+                    # if self.y > self.y_grid:
+                    #     self.status = 'dead'
+                    # elif self.y < 0:
+                    #     self.status = 'dead'
+                    # if predator.x > self.x_grid:
+                    #     predator.status = 'dead'
+                    # elif predator.x < 0:
+                    #     predator.status = 'dead'
+                    # if predator.y > self.y_grid:
+                    #     predator.status = 'dead'
+                    # elif predator.y < 0:
+                    #     predator.status = 'dead'
                     if self.x > self.x_grid:
                         self.x = self.x_grid
                     elif self.x < 0:
@@ -94,12 +111,12 @@ class Prey(Species):
                     pass
 
 
-def generate_new_offspring(population, current_time, ID_Count, pop_limit):
+def generate_new_offspring(population, current_time, ID_Count):
     new_offspring = []
     current_pop_size = len(population)
     for agent in population:
         while agent.num_offspring > 0:
-            if np.random.rand() < 1 - current_pop_size / pop_limit:
+            if np.random.rand() < agent.birth_rate:
                 agent.num_offspring -= 1
                 # prepare for new offspring
                 ID = ID_Count
@@ -107,11 +124,9 @@ def generate_new_offspring(population, current_time, ID_Count, pop_limit):
                 x = agent.x + np.random.normal(0, 1) * np.random.choice([-1, 1])
                 y = agent.y + np.random.normal(0, 1) * np.random.choice([-1, 1])
                 if agent.species_name == 'prey':
-                    new_offspring.append(
-                        Prey(ID, x, y, prey_params, current_time + 1, None))
+                    new_offspring.append(Prey(ID, x, y, prey_params, current_time + 1, None))
                 if agent.species_name == 'predator':
-                    new_offspring.append(
-                        Predator(ID, x, y, predator_params, current_time + 1, None))
+                    new_offspring.append(Predator(ID, x, y, predator_params, current_time + 1, None))
                 current_pop_size += 1
             else:
                 break
@@ -133,7 +148,7 @@ class Predator(Species):
         self.eat = False
         self.not_eat = 0
 
-    def prey_action(self, current_time, preys, current_predator_pop_size):
+    def prey_action(self, current_time, preys):
         for prey in preys:
             if prey.being_caught:
                 continue
@@ -145,8 +160,9 @@ class Predator(Species):
                     time_for_predation = 1
                     prey.death_time = time_for_predation + current_time
                     self.death_time += time_for_predation
-                    if np.random.rand() < 1 - current_predator_pop_size / predator_pop_limit:
-                        self.num_offspring += 1
+                    for _ in range(2):
+                        if np.random.rand() < self.birth_rate:
+                            self.num_offspring += 1
                 elif distance <= self.activity_radius_max + prey.activity_radius_max:
                     angle = np.arctan2(self.y - prey.y, self.x - prey.x)
                     # for predator, it should chase prey
@@ -155,7 +171,22 @@ class Predator(Species):
                     # for prey, it should run away from predator
                     prey.x = prey.x + np.cos(angle) * prey.speed
                     prey.y = prey.y + np.sin(angle) * prey.speed
-                    # check boundary
+                    # if self.x > self.x_grid:
+                    #     self.status = 'dead'
+                    # elif self.x < 0:
+                    #     self.status = 'dead'
+                    # if self.y > self.y_grid:
+                    #     self.status = 'dead'
+                    # elif self.y < 0:
+                    #     self.status = 'dead'
+                    # if prey.x > self.x_grid:
+                    #     prey.status = 'dead'
+                    # elif prey.x < 0:
+                    #     prey.status = 'dead'
+                    # if prey.y > self.y_grid:
+                    #     prey.status = 'dead'
+                    # elif prey.y < 0:
+                    #     prey.status = 'dead'
                     if self.x > self.x_grid:
                         self.x = self.x_grid
                     elif self.x < 0:
@@ -184,7 +215,7 @@ def update_predators_status(population, current_time):
             agent.status = 'active'
         if not agent.eat:
             agent.not_eat += 1
-        if agent.not_eat == 4:
+        if agent.not_eat == 2:
             agent.status = 'dead'
 
 
@@ -199,34 +230,42 @@ def update_prey_status(population, current_time):
 # Prey and Predator params
 x_grid = 28
 y_grid = 28
-prey_pop_limit = 400
-time = 100
+time = 200
 prey_params = {
     'x_grid': x_grid,
     'y_grid': y_grid,
     'species_name': 'prey',
     'species_average_life_span': 20,
-    'species_offspring_possion_mean': 10,
-    'init_species_size': 300,
+    'species_offspring_possion_mean': 3,
+    'init_species_size': 60,
     'activity_radius_max': 2,
-    'speed_max': 2
+    'speed_max': 2,
+    'birth_rate': 0.35
 }
-predator_pop_limit = 150
 predator_params = {
     'x_grid': x_grid,
     'y_grid': y_grid,
     'species_name': 'predator',
     'species_average_life_span': 8,
-    'species_offspring_possion_mean': 1.5,
+    'species_offspring_possion_mean': 0.7,
     'init_species_size': 30,
-    'activity_radius_max': 12,
-    'speed_max': 4
+    'activity_radius_max': 3,
+    'speed_max': 4,
+    'birth_rate': 0.35
 }
 
 # Create prey and predator populations
 preys = [Prey(i, None, None, prey_params, 0, 'active') for i in range(prey_params['init_species_size'])]
 predators = [Predator(i, None, None, predator_params, 0, 'active') for i in
              range(predator_params['init_species_size'])]
+
+# show all the radius of preys
+# for prey in preys:
+#     print(prey.activity_radius)
+#
+# # show all the radius of predators
+# for predator in predators:
+#     print(predator.activity_radius)
 
 
 def Current_landscape(preys, predators, curren_time):
@@ -263,9 +302,32 @@ def Current_landscape(preys, predators, curren_time):
 
 
 def pop_history_plot(pop_history):
-    plt.figure(figsize=(10, 6))
+    plt.figure(figsize=(12, 10))
+    prey_history = [i[0] for i in pop_history]
+    predator_history = [i[1] for i in pop_history]
+    Smooth_prey_history = []
+    Smooth_predator_history = []
+    for i in range(len(prey_history)):
+        if i == 0:
+            Smooth_prey_history.append(prey_history[i])
+            Smooth_predator_history.append(predator_history[i])
+        else:
+            Smooth_prey_history.append(0.2 * prey_history[i] + 0.8 * Smooth_prey_history[i - 1])
+            Smooth_predator_history.append(0.2 * predator_history[i] + 0.8 * Smooth_predator_history[i - 1])
+
+    # subplot 1
+    plt.subplot(2, 1, 1)
     plt.plot([i for i in range(len(pop_history))], [i[0] for i in pop_history], label='prey', color='b')
     plt.plot([i for i in range(len(pop_history))], [i[1] for i in pop_history], label='predator', color='r')
+    plt.xlabel('time')
+    plt.ylabel('population size')
+    plt.title('Population size over time')
+    plt.grid()
+    plt.legend(loc='upper right', fontsize=10)
+    plt.subplot(2, 1, 2)
+    plt.plot([i for i in range(len(pop_history))], Smooth_prey_history, label='Smooth_prey', color='b', linestyle='--')
+    plt.plot([i for i in range(len(pop_history))], Smooth_predator_history, label='Smooth_predator', color='r',
+             linestyle='--')
     plt.xlabel('time')
     plt.ylabel('population size')
     plt.title('Population size over time')
@@ -294,18 +356,18 @@ if __name__ == '__main__':
 
         # record population history
         pop_history.append([len(preys_alive), len(predators_alive)])
+        print('prey and predator population size: ',pop_history[-1])
 
         # check distance between prey and predator
         for prey in preys_alive:
-            prey.enemy_action(current_time, predators_alive, current_predator_pop_size=len(predators_alive))
+            prey.enemy_action(current_time, predators_alive)
         for predator in predators_alive:
-            predator.prey_action(current_time, preys_alive, current_predator_pop_size=len(predators_alive))
+            predator.prey_action(current_time, preys_alive)
 
         # generate new offspring
-        preys_new_offspring, Prey_ID_Count = generate_new_offspring(preys_alive, current_time, Prey_ID_Count,
-                                                                    prey_pop_limit)
+        preys_new_offspring, Prey_ID_Count = generate_new_offspring(preys_alive, current_time, Prey_ID_Count)
         predators_new_offspring, Predator_ID_Count = generate_new_offspring(predators_alive, current_time,
-                                                                            Predator_ID_Count, predator_pop_limit)
+                                                                            Predator_ID_Count)
 
         # update if prey and predator are alive
         update_prey_status(preys, current_time)
@@ -314,5 +376,13 @@ if __name__ == '__main__':
         # add new offspring to population
         preys.extend(preys_new_offspring)
         predators.extend(predators_new_offspring)
+
+        if len(preys_alive) == 0:
+            print('all prey are dead')
+            break
+
+        if len(predators_alive) == 0:
+            print('all predator are dead')
+            break
 
     pop_history_plot(pop_history)

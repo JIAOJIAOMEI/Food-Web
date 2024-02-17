@@ -31,7 +31,7 @@ initial_conditions = [x, y, z]
 # f : death rate of wolves because of natural death
 # g : birth rate of wolves due to predation
 
-a = 0.25
+a = 0.4
 b = 0.05
 c = 0.05
 d = 0.02
@@ -52,7 +52,7 @@ def system(variables, t, a, b, c, d, e, f, g):
     return [dxdt, dydt, dzdt]
 
 
-t = np.linspace(0, 1000, 80000)  # Time points
+t = np.linspace(0, 100, 800)  # Time points
 ode_results = odeint(system, initial_conditions, t, args=(a, b, c, d, e, f, g))
 
 plt.figure(figsize=(30, 6))
